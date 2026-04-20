@@ -14,7 +14,7 @@ public class EMoney implements PilihanPembayaran {
 
     @Override
     public double hitungDiskon(double jumlah) {
-        return jumlah * 0.7;
+        return jumlah * 0.07;
     }
 
     @Override
