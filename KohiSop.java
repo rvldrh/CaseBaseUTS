@@ -3,6 +3,7 @@ package CaseBaseUTS;
 import CaseBaseUTS.Makanan.Makanan;
 import CaseBaseUTS.Makanan.Minuman;
 import CaseBaseUTS.MataUang.EUR;
+import CaseBaseUTS.MataUang.IDR;
 import CaseBaseUTS.MataUang.JPY;
 import CaseBaseUTS.MataUang.MYR;
 import CaseBaseUTS.MataUang.MataUang;
@@ -134,8 +135,7 @@ public class KohiSop {
             List<ItemPesanan> toRemoveM = new ArrayList<>();
             for (ItemPesanan ip : pesanan.getMinumanItems()) {
                 tampilkanRingkasanPesanan(pesanan);
-                int qty = inputKuantitas(ip.getMenu().getNamaMenu(),
-                        ip.getMenu().getKode(), MAX_QTY_MINUMAN);
+                int qty = inputKuantitas(ip.getMenu().getNamaMenu(), ip.getMenu().getKode(), MAX_QTY_MINUMAN);
                 if (qty == 0) toRemoveM.add(ip);
                 else          ip.setQuantity(qty);
             }
@@ -147,8 +147,7 @@ public class KohiSop {
             List<ItemPesanan> toRemoveMk = new ArrayList<>();
             for (ItemPesanan ip : pesanan.getMakananItems()) {
                 tampilkanRingkasanPesanan(pesanan);
-                int qty = inputKuantitas(ip.getMenu().getNamaMenu(),
-                        ip.getMenu().getKode(), MAX_QTY_MAKANAN);
+                int qty = inputKuantitas(ip.getMenu().getNamaMenu(), ip.getMenu().getKode(), MAX_QTY_MAKANAN);
                 if (qty == 0) toRemoveMk.add(ip);
                 else          ip.setQuantity(qty);
             }
@@ -201,7 +200,7 @@ public class KohiSop {
             System.out.print("  >> Pilih mata uang [1-5]: ");
             String raw = sc.nextLine().trim();
             switch (raw) {
-                case "1": return null; 
+                case "1": return new IDR(); 
                 case "2": return new USD();
                 case "3": return new JPY();
                 case "4": return new MYR();
@@ -216,7 +215,7 @@ public class KohiSop {
         System.out.println("\n" + "=".repeat(68));
         System.out.println("  TAHAP 4: Pilih Channel Pembayaran");
         System.out.println("=".repeat(68));
-        System.out.printf("  Total yang harus dibayar: Rp %,.2f%n%n", totalBayar);
+        System.out.printf("  Total yang harus dibayar: Rp %,.3f%n%n", totalBayar);
         System.out.println("  1. Tunai   (tidak ada diskon)");
         System.out.println("  2. QRIS    (diskon 5%, cek saldo)");
         System.out.println("  3. eMoney  (diskon 7%, biaya admin Rp 20, cek saldo)");
@@ -319,8 +318,7 @@ public class KohiSop {
             System.out.printf("  %-4s  %-32s  %s%n", "Kode", "Minuman", "Qty");
             System.out.println("  " + garisT);
             for (ItemPesanan ip : pesanan.getMinumanItems()) {
-                System.out.printf("  %-4s  %-32s  %d%n",
-                        ip.getMenu().getKode(), ip.getMenu().getNamaMenu(), ip.getQuantity());
+                System.out.printf("  %-4s  %-32s  %d%n", ip.getMenu().getKode(), ip.getMenu().getNamaMenu(), ip.getQuantity());
             }
         }
  
@@ -329,8 +327,7 @@ public class KohiSop {
             System.out.printf("  %-4s  %-32s  %s%n", "Kode", "Makanan", "Qty");
             System.out.println("  " + garisT);
             for (ItemPesanan ip : pesanan.getMakananItems()) {
-                System.out.printf("  %-4s  %-32s  %d%n",
-                        ip.getMenu().getKode(), ip.getMenu().getNamaMenu(), ip.getQuantity());
+                System.out.printf("  %-4s  %-32s  %d%n", ip.getMenu().getKode(), ip.getMenu().getNamaMenu(), ip.getQuantity());
             }
         }
  
