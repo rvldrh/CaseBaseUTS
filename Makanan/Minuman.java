@@ -15,7 +15,7 @@ public class Minuman extends Menu {
             return 0.08;
         }
         else{
-            return harga * 0.11;
+            return 0.11;
         }
     }
 }
